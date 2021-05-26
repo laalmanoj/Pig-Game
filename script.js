@@ -9,7 +9,7 @@ let totalscore2 = document.getElementById('score--1');
 let holds = document.querySelector('.btn--hold');
 let player0 = document.querySelector('.player--0');
 let player1 = document.querySelector('.player--1');
-
+let reset = document.querySelector('.btn--new');
 document.querySelector('.dice').classList.add('hidden');
 let score = [ 0, 0 ];
 let currentscore = 0;
@@ -18,7 +18,7 @@ let previousplayer = 0;
 const roll = function() {
 	let randomNumber = Math.trunc(Math.random() * 6) + 1;
 	// document.querySelector('.current-score').textContent = randomNumber;
-	console.log(randomNumber);
+	// console.log(randomNumber);
 	document.querySelector('.dice').classList.remove('hidden');
 	document.querySelector('.dice').src = `./dice-${randomNumber}.png`;
 
@@ -58,8 +58,25 @@ const hold = function() {
 		previousplayer = activeplayer === 1 ? 0 : 1;
 		document.getElementById(`current--${previousplayer}`).textContent = 0;
 		currentscore = 0;
+		player0.classList.toggle('player--active');
+		player1.classList.toggle('player--active');
 	}
+};
+
+const resetgame = function() {
+	document.querySelector('.dice').classList.add('hidden');
+	score = [ 0, 0 ];
+	currentscore = 0;
+	activeplayer = 0;
+	previousplayer = 0;
+	totalscore1.textContent = 0;
+	totalscore2.textContent = 0;
+	csplayer1.textContent = 0;
+	csplayer2.textContent = 0;
+	player0.classList.toggle('player--active');
+	player1.classList.toggle('player--active');
 };
 
 holds.addEventListener('click', hold);
 rollButton.addEventListener('click', roll);
+reset.addEventListener('click', resetgame);
