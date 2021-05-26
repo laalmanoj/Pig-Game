@@ -75,6 +75,8 @@ const resetgame = function() {
 	csplayer2.textContent = 0;
 	player0.classList.toggle('player--active');
 	player1.classList.toggle('player--active');
+	document.querySelector('.btn--roll').classList.remove('nohover');
+	document.querySelector('.btn--hold').classList.remove('nohover');
 };
 
 holds.addEventListener('click', hold);
